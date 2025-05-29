@@ -1,18 +1,16 @@
 {
-  "name": "my-mern-app",
+  "name": "Imagify",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd api && npm run dev",
-    "client": "cd client && npm start",
-    "build": "cd client && npm run build"
-  },
-  "dependencies": {
-    // shared dependencies, if any
-  },
   "workspaces": [
     "client",
-    "api"
-  ]
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+    "build": "npm run build --workspace=client"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
