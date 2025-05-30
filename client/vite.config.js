@@ -7,7 +7,7 @@ export default defineConfig({
     proxy: {
       // Proxy /api to your backend server during development
       '/api': {
-        target: 'http://localhost:4000',  // Your Express backend URL
+        target: 'http://localhost:3000',  // Your Express backend URL
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '/api'),  // Optional, keeps /api
