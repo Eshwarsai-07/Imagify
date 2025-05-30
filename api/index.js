@@ -23,13 +23,21 @@ app.use(cors({
   credentials: true, // If you use cookies/auth
 }));
 
-await connectDB()
+app.get('/', (req, res) => {
+  return res.send("API WORKING")
+});
 
-app.use('/api/user', userRouter)
-app.use('/api/image', imageRouter)
+;(async () => {
+  try {
+    await connectDB()
 
-app.get('/', (req, res)=>{
-    return res.send("API WORKING")
-})
+    app.use('/api/user', userRouter)
+    app.use('/api/image', imageRouter)
 
-app.listen(PORT, '0.0.0.0', ()=>console.log("Server running on port " + PORT))
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log("✅ Server running on port " + PORT)
+    })
+  } catch (error) {
+    console.error("❌ Failed to start server:", error)
+  }
+})()
