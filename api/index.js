@@ -12,17 +12,6 @@ const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(express.json())
-app.use(cors())
-
-
-await connectDB()
-app.use('/api/user', userRouter)
-app.use('/api/image', imageRouter)
-app.get('/', (req, res)=>{
-    return res.send("API WORKING")
-})
-
-const cors = require("cors");
 
 const allowedOrigins = [
   "http://localhost:3000",           // Development frontend
@@ -34,5 +23,13 @@ app.use(cors({
   credentials: true, // If you use cookies/auth
 }));
 
+await connectDB()
 
-app.listen(PORT, ()=>console.log("Server running on port " + PORT))
+app.use('/api/user', userRouter)
+app.use('/api/image', imageRouter)
+
+app.get('/', (req, res)=>{
+    return res.send("API WORKING")
+})
+
+app.listen(PORT, '0.0.0.0', ()=>console.log("Server running on port " + PORT))
