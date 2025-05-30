@@ -25,7 +25,7 @@ app.get('/', (req, res)=>{
 const cors = require("cors");
 
 const allowedOrigins = [
-  "http://localhost:4000",           // Development frontend
+  "http://localhost:3000",           // Development frontend
   "https://imagify-client-six.vercel.app", // Production frontend
 ];
 
