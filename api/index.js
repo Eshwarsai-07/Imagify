@@ -22,10 +22,17 @@ app.get('/', (req, res)=>{
     return res.send("API WORKING")
 })
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+const cors = require("cors");
+
+const allowedOrigins = [
+  "http://localhost:4000",           // Development frontend
+  "https://imagify-client-six.vercel.app", // Production frontend
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true, // If you use cookies/auth
+}));
 
 
 app.listen(PORT, ()=>console.log("Server running on port " + PORT))
