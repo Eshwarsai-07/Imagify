@@ -25,7 +25,7 @@ const BuyCredit = () => {
       handler : async (response) =>{
        try {
 
-        const {data} = await axios.post(backendUrl+'/api/user/verify-razor',
+        const {data} = await axios.post(`${backendUrl}/api/user/verify-razor`,
           response , {headers:{token}}
         )
         if(data.success){
@@ -51,7 +51,7 @@ const BuyCredit = () => {
         setShowLogin(true)
       }
       
-      const {data }= await axios.post(backendUrl+'/api/user/pay-razor' , {
+      const {data }= await axios.post(`${backendUrl}/api/user/pay-razor` , {
         planId
       },{
         headers:{token}
