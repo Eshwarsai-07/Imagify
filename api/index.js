@@ -14,13 +14,13 @@ const app = express()
 app.use(express.json())
 
 const allowedOrigins = [
-  "http://localhost:3000",           // Development frontend
-  "https://imagify-client-six.vercel.app", // Production frontend
+  "http://localhost:3000",           
+  "https://imagify-client-six.vercel.app", 
 ];
 
 app.use(cors({
   origin: allowedOrigins,
-  credentials: true, // If you use cookies/auth
+  credentials: true, 
 }));
 
 app.get('/', (req, res) => {
